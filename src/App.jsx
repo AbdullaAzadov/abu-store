@@ -57,10 +57,7 @@ function App() {
             <ScrollToTop />
             <Header />
             <Routes>
-                <Route
-                    index
-                    element={<Navigate to="products?page=1" replace />}
-                />
+                <Route index element={<Navigate to="products" replace />} />
                 <Route
                     path="products"
                     element={<Main handler={handler} state={state} />}

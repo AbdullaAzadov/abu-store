@@ -18,6 +18,11 @@ export default function Product({ product, handler, cart, wishlist }) {
         if (cart.includes(id)) setIsAdded(true);
     }, [wishlist, cart, id]);
 
+    const handleToggleHover = (v = null) => {
+        if (isLoading) return;
+        setIsHovered((h) => (v === null ? !h : v));
+    };
+
     const handleAddToCart = () => {
         setIsAdded(true);
         handler({ type: "addToCart", payload: id });
@@ -46,8 +51,8 @@ export default function Product({ product, handler, cart, wishlist }) {
         >
             <div
                 className={`${styles.container}  ${isLoading && "loader"}`}
-                onMouseLeave={() => setIsHovered(false)}
-                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => handleToggleHover(false)}
+                onMouseEnter={() => handleToggleHover(true)}
             >
                 <img
                     src={images[0]}
@@ -56,7 +61,7 @@ export default function Product({ product, handler, cart, wishlist }) {
                     className={isLoading ? "hide" : ""}
                 />
 
-                {isHovered && !isLoading && (
+                {isHovered && (
                     <div className={styles.hoverInfo}>
                         <h5>{rating}⭐</h5>
                         <nav>
@@ -88,8 +93,8 @@ export default function Product({ product, handler, cart, wishlist }) {
             </div>
             <div
                 className={`${styles.info}  ${isLoading && "loader"}`}
-                onMouseLeave={() => setIsHovered(false)}
-                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => handleToggleHover(false)}
+                onMouseEnter={() => handleToggleHover(true)}
             >
                 <h5 className={isLoading ? "hide" : ""}>{title}</h5>
                 <h5 className={isLoading ? "hide" : ""}>{price}$</h5>

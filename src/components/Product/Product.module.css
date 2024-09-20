@@ -78,6 +78,7 @@ div:global(.loader) {
     background-size: 400% 100%;
     animation: gradient 4s ease-in infinite;
     border-color: transparent;
+    cursor: auto;
 }
 
 @keyframes gradient {

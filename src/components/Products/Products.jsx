@@ -1,18 +1,8 @@
 import styles from "./Products.module.css";
 import Product from "../Product/Product";
-import PageNav from "../PageNav/PageNav";
 import proptypes from "prop-types";
 
-function Products({
-    products,
-    handler,
-    state,
-    maxPages,
-    page,
-    setNextPage,
-    setPrevPage,
-    setPage,
-}) {
+function Products({ products, handler, state }) {
     return (
         <div className={styles.wrapper}>
             <ul>
@@ -26,13 +16,6 @@ function Products({
                     />
                 ))}
             </ul>
-            <PageNav
-                count={maxPages}
-                current={page}
-                onNext={setNextPage}
-                onPrev={setPrevPage}
-                onSet={setPage}
-            />
         </div>
     );
 }
@@ -42,9 +25,4 @@ Products.propTypes = {
     products: proptypes.array.isRequired,
     handler: proptypes.func.isRequired,
     state: proptypes.object.isRequired,
-    maxPages: proptypes.number,
-    page: proptypes.number,
-    setNextPage: proptypes.func,
-    setPrevPage: proptypes.func,
-    setPage: proptypes.func,
 };
