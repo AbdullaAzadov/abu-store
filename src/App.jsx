@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useReducer } from "react";
 import ScrollToTop from "./helpers/ScrollToTop.jsx";
 
-import Header from "./pages/Header.jsx";
-import Main from "./pages/Main.jsx";
-import Results from "./pages/Results.jsx";
-import Cart from "./pages/Cart.jsx";
-import Wishlist from "./pages/Wishlist.jsx";
+import Header from "./pages/Header/Header.jsx";
+import Main from "./pages/Main/Main.jsx";
+import Results from "./pages/Results/Results.jsx";
+import Cart from "./pages/Cart/Cart.jsx";
+import Wishlist from "./pages/Wishlist/Wishlist.jsx";
 
 const initialState = {
     cart: [],
@@ -30,7 +30,7 @@ function reducer(state, action) {
                 ),
             };
         case "addToWishlist":
-            if (state.cart.includes(action.payload)) return state;
+            if (state.wishlist.includes(action.payload)) return state;
             return {
                 ...state,
                 wishlist: [...state.wishlist, action.payload],
@@ -62,7 +62,10 @@ function App() {
                     path="products"
                     element={<Main handler={handler} state={state} />}
                 />
-                <Route path="search" element={<Results />} />
+                <Route
+                    path="search"
+                    element={<Results handler={handler} state={state} />}
+                />
                 <Route path="cart" element={<Cart cart={state.cart} />} />
                 <Route
                     path="wishlist"

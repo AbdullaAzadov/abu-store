@@ -11,6 +11,7 @@ export default function usePagination(
     const [doFetch, setDoFetch] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [wasLastItemLoaded, setWasLastItemLoaded] = useState(false);
+    const [doReset, setDoReset] = useState(false);
 
     const onScroll = () => {
         const { scrollHeight, scrollTop, clientHeight } =
@@ -37,7 +38,8 @@ export default function usePagination(
         };
 
         if (items.length === 0) fetch().then(() => setIsLoading(false));
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [page, limit, doReset]);
 
     useEffect(() => {
         async function fetch() {
@@ -56,5 +58,20 @@ export default function usePagination(
                 .then(() => setIsLoading(false));
     }, [doFetch, page, isLoading, fetchFn, limit, items, wasLastItemLoaded]);
 
-    return [items, isLoading];
+    useEffect(() => {
+        if (doReset) {
+            setItems(initialItems);
+            setPage(initialPage);
+            setDoFetch(false);
+            setIsLoading(false);
+            setWasLastItemLoaded(false);
+            setDoReset(false);
+        }
+    }, [doReset, initialItems, initialPage]);
+
+    const reset = () => {
+        setDoReset(true);
+    };
+
+    return [items, isLoading, reset];
 }

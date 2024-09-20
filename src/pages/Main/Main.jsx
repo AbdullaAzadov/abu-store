@@ -1,9 +1,9 @@
 import propTypes from "prop-types";
 
-import { fetchProducts } from "../api/products";
-import usePagination from "../hooks/usePagination";
-import Products from "../components/Products/Products";
-import Loader from "../components/Loader/Loader";
+import { fetchProducts } from "../../api/products";
+import usePagination from "../../hooks/usePagination";
+import Products from "../../components/Products/Products";
+import Loader from "../../components/Loader/Loader";
 import styles from "./Main.module.css";
 
 function Main({ handler, state }) {

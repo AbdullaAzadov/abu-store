@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RiHeartAdd2Line, RiHeart3Fill } from "react-icons/ri";
 import { TbShoppingCartPlus, TbShoppingCartCopy } from "react-icons/tb";
 import proptypes from "prop-types";
@@ -10,13 +10,8 @@ export default function Product({ product, handler, cart, wishlist }) {
     const { images, title, price, id, rating } = product;
     const [isLoading, setIsLoading] = useState(true);
     const [isHovered, setIsHovered] = useState(false);
-    const [isAdded, setIsAdded] = useState(false);
-    const [isLiked, setIsLiked] = useState(false);
-
-    useEffect(() => {
-        if (wishlist.includes(id)) setIsLiked(true);
-        if (cart.includes(id)) setIsAdded(true);
-    }, [wishlist, cart, id]);
+    const isLiked = wishlist.includes(id);
+    const isAdded = cart.includes(id);
 
     const handleToggleHover = (v = null) => {
         if (isLoading) return;
@@ -24,22 +19,17 @@ export default function Product({ product, handler, cart, wishlist }) {
     };
 
     const handleAddToCart = () => {
-        setIsAdded(true);
         handler({ type: "addToCart", payload: id });
     };
     const handleRemoveFromCart = () => {
-        setIsAdded(false);
         handler({ type: "removeFromCart", payload: id });
     };
     const handleAddToWishlist = () => {
-        setIsLiked(true);
         handler({ type: "addToWishlist", payload: id });
     };
     const handleRemoveFromWishlist = () => {
-        setIsLiked(false);
         handler({ type: "removeFromWishlist", payload: id });
     };
-
     const handleOnLoaded = () => {
         setIsLoading(false);
     };

@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.mainNoResults {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.main > span {
+    box-sizing: border-box;
+    padding: 0 4rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    color: rgba(52, 52, 52, 0.7);
+}
