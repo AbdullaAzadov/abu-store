@@ -1,5 +1,5 @@
 header {
-    background-color: rgb(12, 12, 12);
+    background-color: #344966;
     color: white;
     padding: 1rem;
     font-size: 1.5rem;
@@ -11,9 +11,9 @@ header {
 .cart {
     font-size: 1.75rem;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.33rem;
     border-radius: 100%;
 }
 .cart:hover {
-    background-color: rgb(53, 52, 53);
+    background-color: rgba(200, 200, 200, 0.25);
 }

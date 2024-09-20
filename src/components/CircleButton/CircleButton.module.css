@@ -1,0 +1,23 @@
+button.btn {
+    box-sizing: border-box;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    background-color: rgba(200, 200, 200, 0.25);
+    color: #344966;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+button.btn:hover {
+    background-color: rgba(200, 200, 200, 0.75);
+}
+
+button.btn:global(.active) {
+    background-color: #344966;
+    color: white;
+}
